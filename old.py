@@ -27,6 +27,8 @@ def interpret(variable_express:str):
             if line.startswith(current_indent_text+current_indent_internal):
                 if line.find('reflect') != -1:
                     line=line.replace('reflect','return reflect(local())()')
+                if re.match('?[A-Za-z0-9_]+ ',line):
+                    print(line)
                 res += line+'\n'
             else:
                 indents[0]=False
@@ -55,6 +57,7 @@ x=1
 data2 = '''
 ewijfwef
 model Simple:
+    a = ?4
     reflect 3,2+?0
 fwoeijfew
 '''

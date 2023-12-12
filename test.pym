@@ -1,0 +1,5 @@
+model Linear:
+    reflect(default_optimizer,10) $3.,$2.+?0.
+
+a=Linear()
+print(a)
