@@ -1,5 +1,22 @@
-model Linear:
-    reflect(default_optimizer,10) $3.,$2.+?0.
 
-a=Linear()
-print(a)
+model LinearRegression:
+    hidden_1st := X*?W1
+    hidden_2nd := hidden_1st*?Dense(4)
+    out = hidden_2nd*?Dense(1)
+    Y ?= out
+
+model LinearRegression<__err__=MSE,__opt__=Adam,__act__=ReLU>:
+    Y ?= $a*?1
+
+model Arithmetic:
+    3 ?= ?4-$1
+
+
+model TorchExample<__epo__=2000,__opt__=SCD(1e-6),__err__=MSE>:
+    #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
+    x = $torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
+    y = $torch.sin(x)
+    if __cur_epo__ % 100 == 99:
+        print(__cur_epo__,__cur__err__)
+    
+    y ?= ? + ?*x + ?*x**2 + ?*x**3
