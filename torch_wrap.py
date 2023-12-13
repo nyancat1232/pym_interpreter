@@ -1,5 +1,3 @@
-import torch
-
 #model SimpleExample:
 #    10 ?= ? * 2
 
