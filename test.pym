@@ -24,4 +24,4 @@ model TorchExample:
     if __cur_epo__ % 100 == 99:
         print(__cur_epo__,__cur__err__)
     
-    y ?= ?0 + ?0*x + ?0*x**2 + ?0*x**3
+    y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3

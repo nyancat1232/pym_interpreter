@@ -30,6 +30,7 @@ from pyplus.perceptron.graph import Node,default_optimizer\n'''
     model_block_finder=re.compile(find)
     res_str = model_block_finder.sub(r'Node(\1,is_parameter=True)',res_str)
 
+    return pre_str+res_str
     #question mark(non func) to parameter
     find=r'\?(\w+)'
     model_block_finder=re.compile(find)
