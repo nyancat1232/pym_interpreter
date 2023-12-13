@@ -19,25 +19,12 @@ model Arithmetic:
     3 ?= ?4-1
 
 
-!loss MSE
-!optimizer SGD(1e-6,2000)
-model TorchExample:
+!loss MSELoss(reduction='sum')
+!optimizer SGD(lr=1e-6,2000)
+model Polynomial3:
     #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
     x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
     y = torch.sin(x)
-    if __cur_epo__ % 100 == 99:
-        print(__cur_epo__,__cur__err__)
-    
-    y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
-
-!loss MSE
-!optimizer SGD(1e-6,2000)
-model TorchExample:
-    #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
-    x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
-    y = torch.sin(x)
-    if __cur_epo__ % 100 == 99:
-        print(__cur_epo__,__cur__err__)
     
     y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
 
