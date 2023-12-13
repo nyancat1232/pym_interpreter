@@ -30,3 +30,7 @@ model Polynomial3:
 
 model SimpleExample:
     10 ?= ? * 2
+
+
+model Xor:
+    [0,1,1,0] ?= [[0,0],[0,1],[1,0],[0,0]] * ? #? automatically converted as 2x1
