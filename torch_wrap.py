@@ -3,6 +3,10 @@ import torch
 #model SimpleExample:
 #    10 ?= ? * 2
 
+#compile result
+
+import torch
+
 meta_loss = torch.nn.MSELoss
 meta_optimizer = torch.optim.SGD
 meta_epoch = 10
