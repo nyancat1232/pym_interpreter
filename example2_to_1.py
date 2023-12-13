@@ -23,11 +23,7 @@ def SimpleExample(_tp:TorchPlus):
         label = _tp.all_tensors['___con_2']
 
         #train
-        loss = _tp.meta_error_measurement()(label,  pred)
-        optim = _tp.meta_optimizer(_tp.get_all_params(),lr=_tp.meta_optimizer_learning_rate)
-        optim.zero_grad()
-        loss.backward()
-        optim.step()
+        _tp.train_one_step_by_equation(label,pred)
     return _tp.get_all_params()
 
 
