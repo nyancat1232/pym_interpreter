@@ -9,9 +9,9 @@ model LinearRegression:
 xa.vi.er.viv.ss.bob.we.void()
 
 
-@model_apply(error = MSE)
-@model_apply(optimizer=Adam(1e-6,2000))
-@model_apply(activator=ReLU)
+!loss MSE
+!optimizer Adam(1e-6,2000)
+!activator ReLU
 model LinearRegression:
     Y ?= a*?1
 
@@ -19,8 +19,8 @@ model Arithmetic:
     3 ?= ?4-1
 
 
-@model_apply(error = MSE)
-@model_apply(optimizer=SCD(1e-6,2000))
+!loss MSE
+!optimizer SGD(1e-6,2000)
 model TorchExample:
     #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
     x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
@@ -30,8 +30,8 @@ model TorchExample:
     
     y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
 
-@model_apply(error = MSE)
-@model_apply(optimizer=SCD(1e-6,2000))
+!loss MSE
+!optimizer SGD(1e-6,2000)
 model TorchExample:
     #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
     x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
@@ -40,17 +40,6 @@ model TorchExample:
         print(__cur_epo__,__cur__err__)
     
     y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
-
-
-    meta_optimizer
-    meta_optimizer_learning_rate
-    meta_optimizer_epoch 
-    meta_error_measurement 
-    meta_activator
-    constatns 1,3
-    parameters ?
-    reflect_predictions  ? + 1
-    reflect_labels 3
 
 model SimpleExample:
-    3 := ? + 1
+    10 ?= ? * 2
