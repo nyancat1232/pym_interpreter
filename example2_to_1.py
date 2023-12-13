@@ -8,8 +8,8 @@ from pyplus.pytorch.simple import TorchPlus
 
 tp = TorchPlus()
 tp.meta_optimizer = torch.optim.SGD
-tp.meta_optimizer_epoch = 300
-tp.meta_optimizer_learning_rate = 0.01
+tp.meta_optimizer_epoch = 20
+tp.meta_optimizer_learning_rate = 0.05
 tp.meta_error_measurement = torch.nn.MSELoss
 def SimpleExample(_tp:TorchPlus):
     #all terminals
