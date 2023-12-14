@@ -11,14 +11,18 @@ assign process:
 
 pp=r'[\+\-\*\/\@\s]'
 
-<<n,m>> [__pp__] ? => <<n,m>> + torch.FloatTensor(n,m,require_grads=True)
-<<n,m>> @ ?(<j>) => <<n,m>> @ torch.FloatTensor(m,j,require_grads=True)
+<<n,m>>     [__pp__].   ?       => <<n,m>>  [__pp__]     torch.FloatTensor(n,m,require_grads=True)
+<<n,m>>     @           ?(<j>)  => <<n,m>>  @            torch.FloatTensor(m,j,require_grads=True)
+
+?       [__pp__]    <<n,m>>     => torch.FloatTensor(n,m,require_grads=True) [__pp__]   <<n,m>> 
+?(<j>)  @           <<n,m>>     => torch.FloatTensor(j,n,require_grads=True) @          <<n,m>>
+
+
+
 
 #internally torch's
 linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype) => torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
 
-? + 3 => wrong! first place must be non parameter
-3 + ? => right
 
 
 order:
