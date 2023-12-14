@@ -1,8 +1,8 @@
 
 model LinearRegression:
     hidden_1st := X*?W1
-    hidden_2nd := hidden_1st*?Dense(4)
-    out = hidden_2nd*?Dense(1)
+    hidden_2nd := hidden_1st*?(4)
+    out = hidden_2nd*?(1)
     Y ?= out
 
 

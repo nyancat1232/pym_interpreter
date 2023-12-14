@@ -11,11 +11,11 @@ assign process:
 
 pp=r'[\+\-\*\/\@\s]'
 
-<<n,m>>     [__pp__].   ?       => <<n,m>>  [__pp__]     torch.FloatTensor(n,m,require_grads=True)
-<<n,m>>     @           ?(<j>)  => <<n,m>>  @            torch.FloatTensor(m,j,require_grads=True)
+<<n,m>>     [__pp__].   <<autogen>>       => <<n,m>>  [__pp__]     torch.FloatTensor(n,m,require_grads=True)
+<<n,m>>     @           <<autogen>>(<j>)  => <<n,m>>  @            torch.FloatTensor(m,j,require_grads=True)
 
-?       [__pp__]    <<n,m>>     => torch.FloatTensor(n,m,require_grads=True) [__pp__]   <<n,m>> 
-?(<j>)  @           <<n,m>>     => torch.FloatTensor(j,n,require_grads=True) @          <<n,m>>
+<<autogen>>       [__pp__]    <<n,m>>     => torch.FloatTensor(n,m,require_grads=True) [__pp__]   <<n,m>> 
+<<autogen>>(<j>)  @           <<n,m>>     => torch.FloatTensor(j,n,require_grads=True) @          <<n,m>>
 
 
 
@@ -27,8 +27,8 @@ linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype) => torch.linspace(-math.pi, 1.
 
 order:
 " ? " -> " <<autogen>> " :
-    r'\?{pp}' -> '<<autogen>> '
+    r'\?({pp})' -> '<<autogen>>\1'
 " ?(4) " -> "<<autogen>>(4)" :
-    r'\?(\([\d.]+\))' -> '<<autogen>>(\1)'
+    r'\?(\([\d.]+\))' -> '<<autogen>>\1'
 " ?2.1 " -> "torch.FloatTensor([2.1],require_grads=True)" :
     r'\?([\d.]+)' -> 'torch.FloatTensor([\1],require_grads=True)'
