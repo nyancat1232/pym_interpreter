@@ -24,6 +24,12 @@ from pyplus.perceptron.graph import Node,default_optimizer\n'''
     find=rf'\?(\([\d.]+\))'
     model_block_finder=re.compile(find)
     res_str=model_block_finder.sub(r'<<autogen>>\1',res_str)
+    
+
+    #init param of scalar
+    #find=rf'\?([\d.]+)'
+    #model_block_finder=re.compile(find)
+    #res_str=model_block_finder.sub(r'torch.FloatTensor([\1],require_grads=True)',res_str)
 
     return pre_str+res_str
 

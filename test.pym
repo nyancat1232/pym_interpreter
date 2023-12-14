@@ -23,8 +23,8 @@ model Arithmetic:
 !optimizer SGD(lr=1e-6,2000)
 model Polynomial3:
     #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
-    x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
-    y = torch.sin(x)
+    x = linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
+    y = sin(x)
     
     y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
 

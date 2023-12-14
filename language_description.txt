@@ -1,5 +1,4 @@
 ?<var_name> => assign as a parameter.
-<original> <@> ?To(<num>) => automatically Tensor(<original>.shape[-1],<num>)
 
 assign value:
     parse value tree
@@ -10,11 +9,16 @@ assign value:
 assign process:
     copy original source
 
-
-<<left>> @ ?(<<num>>) => torch.rand(<<left>>.shape[-1],<<num>>,require_grads=True)
-
-\s*\*\s*
 pp=r'[\+\-\*\/\@\s]'
+
+<<n,m>> [__pp__] ? => <<n,m>> + torch.FloatTensor(n,m,require_grads=True)
+<<n,m>> @ ?(<j>) => <<n,m>> @ torch.FloatTensor(m,j,require_grads=True)
+
+#internally torch's
+linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype) => torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
+
+? + 3 => wrong! first place must be non parameter
+3 + ? => right
 
 
 order:
