@@ -1,0 +1,26 @@
+?<var_name> => assign as a parameter.
+<original> <@> ?To(<num>) => automatically Tensor(<original>.shape[-1],<num>)
+
+assign value:
+    parse value tree
+    assign all values of terminal
+    all value names must be like ___<is_parameter>_<num>
+    only watches rvalue except ?=(reflect function)
+
+assign process:
+    copy original source
+
+
+<<left>> @ ?(<<num>>) => torch.rand(<<left>>.shape[-1],<<num>>,require_grads=True)
+
+\s*\*\s*
+pp=r'[\+\-\*\/\@\s]'
+
+
+order:
+" ? " -> " <<autogen>> " :
+    r'\?{pp}' -> '<<autogen>> '
+" ?(4) " -> "<<autogen>>(4)" :
+    r'\?([\d.]+)' -> '<<autogen>>(\1)'
+" ?2.1 " -> "torch.FloatTensor([2.1],require_grads=True)" :
+    r'\?([\d.]+)' -> 'torch.FloatTensor([\1],require_grads=True)'

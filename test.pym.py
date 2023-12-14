@@ -12,31 +12,34 @@ model LinearRegression:
 xa.vi.er.viv.ss.bob.we.void()
 
 
-@model_apply(error = MSE)
-@model_apply(optimizer=Adam(1e-6,2000))
-@model_apply(activator=ReLU)
+!loss MSE
+!optimizer Adam(1e-6,2000)
+!activator ReLU
 model LinearRegression:
     Y ?= a*?1
 
 model Arithmetic:
     3 ?= ?4-1
 
-@model_apply(error = MSE)
-@model_apply(optimizer=SCD(1e-6,2000))
-model TorchExample:
+
+!loss MSELoss(reduction='sum')
+!optimizer SGD(lr=1e-6,2000)
+model Polynomial3:
+    #https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
     x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
     y = torch.sin(x)
-    if __cur_epo__ % 100 == 99:
-        print(__cur_epo__,__cur__err__)
     
     y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
 
-@model_apply(error = MSE)
-@model_apply(optimizer=SCD(1e-6,2000))
-model TorchExample:
-    x = torch.linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype)
-    y = torch.sin(x)
-    if __cur_epo__ % 100 == 99:
-        print(__cur_epo__,__cur__err__)
-    
-    y ?= ?0 + ?0.*x + ?0*x**2 + ?0*x**3
+model SimpleExample:
+    10 ?= <<autogen>> * 2
+
+model SimpleExample:
+    10 ?= <<autogen>> * 2 * <<autogen>>* <<autogen>>
+
+model Xor:
+    [0,1,1,0] ?= [[0,0],[0,1],[1,0],[0,0]] * <<autogen>> #<<autogen>> automatically converted as 2x1
+
+
+model AutoConvert:
+    10 ?= ?2 + ?2.1 * <<autogen>> @ ?(4) * <<autogen>> @ ?(1)
