@@ -21,6 +21,6 @@ order:
 " ? " -> " <<autogen>> " :
     r'\?{pp}' -> '<<autogen>> '
 " ?(4) " -> "<<autogen>>(4)" :
-    r'\?([\d.]+)' -> '<<autogen>>(\1)'
+    r'\?(\([\d.]+\))' -> '<<autogen>>(\1)'
 " ?2.1 " -> "torch.FloatTensor([2.1],require_grads=True)" :
     r'\?([\d.]+)' -> 'torch.FloatTensor([\1],require_grads=True)'

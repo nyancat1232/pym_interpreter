@@ -11,8 +11,17 @@ def interpret(variable_express:str):
 from pyplus.perceptron.graph import Node,default_optimizer\n'''
     res_str=variable_express
 
-    #remove comments
+    #remove comment
+    find=rf'\#.*'
+    model_block_finder=re.compile(find)
+    res_str=model_block_finder.sub(r'',res_str)
+
+    #autogen
     find=rf'\?({pp})'
+    model_block_finder=re.compile(find)
+    res_str=model_block_finder.sub(r'<<autogen>>\1',res_str)
+
+    find=rf'\?(\([\d.]+\))'
     model_block_finder=re.compile(find)
     res_str=model_block_finder.sub(r'<<autogen>>\1',res_str)
 
