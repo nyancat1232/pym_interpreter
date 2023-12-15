@@ -16,13 +16,13 @@ def assign_values(self:TorchPlus):
     self.all_leaf_tensors[2]  = TorchTensorPlus(ttype=TTPType.DEFAULT)
     self.all_leaf_tensors[2].tensor = torch.FloatTensor([20])
 tp.assign_leaf_tensors=assign_values
-def assign_process(self:TorchPlus):
+def assign_process(self:TorchPlus,current_sequence:int):
     #.......
     #
     #self._pred = self.all_leaf_tensors[1] * self.all_leaf_tensors[0]
     #self._label = self.all_leaf_tensors[2]
-    self._pred = self.all_leaf_tensors[1].tensor * self.all_leaf_tensors['input0'].tensor
-    self._label = self.all_leaf_tensors[2].tensor
+    self._pred = self.all_leaf_tensors[1][current_sequence] * self.all_leaf_tensors['input0'].tensor
+    self._label = self.all_leaf_tensors[2][current_sequence]
 tp.assign_process_process = assign_process
 
 
