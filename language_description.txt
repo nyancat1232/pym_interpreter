@@ -1,4 +1,16 @@
-?<var_name> => assign as a parameter.
+
+
+?<varname> => as parameter
+$<varname> => input
+
+!sequence # if this model accepts sequential tensors.
+!loss <<loss function>>
+!optimizer(<<epoch>>) <<optimizer function>>(<<optimizer hyperparameter>>)
+!activator <<activator function>>
+model LinearRegression:
+    Y ?= ?a*$1
+
+
 
 assign value:
     parse value tree
@@ -16,6 +28,7 @@ pp=r'[\+\-\*\/\@\s]'
 
 <<autogen>>       [__pp__]    <<n,m>>     => torch.FloatTensor(n,m,require_grads=True) [__pp__]   <<n,m>> 
 <<autogen>>(<j>)  @           <<n,m>>     => torch.FloatTensor(j,n,require_grads=True) @          <<n,m>>
+
 
 #auto conversion is not yet supported.
 

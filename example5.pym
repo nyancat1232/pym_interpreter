@@ -1,8 +1,7 @@
 #https://wikidocs.net/55580
 
 !sequence
-!optimizer SGD(lr=1e-5) 
-!optimizer.epoch 20
+!optimizer(20) SGD(lr=1e-5) 
 model MiniBatch:
     x_train  =  $FloatTensor([[73,  80,  75], 
                                 [93,  88,  93], 
@@ -12,6 +11,6 @@ model MiniBatch:
     y_train  =  FloatTensor([[152], [185], [180], [196], [142]])
 
     y_train ?= x_train @ ?(1)
-
+ 
 model = MiniBatch()  
 pred_y = model(torch.FloatTensor([[73, 80, 75]]) ) 

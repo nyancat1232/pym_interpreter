@@ -21,10 +21,12 @@ def assign_values(self:TorchPlus):
     self.all_leaf_tensors['output'].tensor = torch.FloatTensor([20.])
 tp.assign_leaf_tensors=assign_values
 def assign_process(self:TorchPlus,current_sequence:int):
-    proc = self.all_leaf_tensors['input'][-1] * self.all_leaf_tensors['___p'].tensor
+    #input,output => ..[current_sequence], param => ...tensor
+
+    proc = self.all_leaf_tensors['input'][current_sequence] * self.all_leaf_tensors['___p'].tensor
 
     self._pred = proc
-    self._label = self.all_leaf_tensors['output'][-1]
+    self._label = self.all_leaf_tensors['output'][current_sequence]
 tp.assign_process_process = assign_process
 
 print(tp.train())

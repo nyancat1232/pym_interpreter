@@ -1,6 +1,6 @@
 #!activator ReLU
 #model Xor:
-#    [[0],[1],[1],[0]] ?= [[0,0],[0,1],[1,0],[0,0]] * ? #? automatically converted as 2x1
+#    [[0],[1],[1],[0]] ?= $[[0,0],[0,1],[1,0],[0,0]] * ? #? automatically converted as 2x1
 
 import torch
 import torch.nn as nn
