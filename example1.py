@@ -7,6 +7,8 @@ from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlus
 
 tp = TorchPlus()
 def assign_values(self:TorchPlus):
+    #elf.all_leaf_tensors[0]  = TorchTensorPlus(ttype=TTPType.INPUT)
+    #self.all_leaf_tensors[0].tensor = torch.FloatTensor([2])
     self.all_leaf_tensors[0]  = TorchTensorPlus(ttype=TTPType.INPUT)
     self.all_leaf_tensors[0].tensor = torch.FloatTensor([2])
     self.all_leaf_tensors[1]  = TorchTensorPlus(ttype=TTPType.PARAMETER)
