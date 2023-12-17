@@ -1,5 +1,5 @@
 #model SimpleExample:
-#    20 ?= ? * $2
+#    s[20,40] ?= ? * $s[2,4]
 
 import torch
 import torch.nn as nn
@@ -35,5 +35,6 @@ def assign_process(tensors_current_sequence):
     return _label,_pred
 tp.assign_process_process = assign_process
 
+print(len(torch.FloatTensor([[10],[11],[12]])))
 print(tp.train())
 print(tp.predict(**{'input':torch.FloatTensor([[10],[11],[12]])}))
