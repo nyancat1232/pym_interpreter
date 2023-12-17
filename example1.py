@@ -24,12 +24,6 @@ tp['___p'].tensor = torch.FloatTensor(1)
 tp.label_tensor = TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0)
 tp.label_tensor.tensor = torch.FloatTensor([18.,36.])
 
-print(tp._all_leaf_tensors[0])
-print(tp._all_leaf_tensors[1])
-print(tp._all_leaf_tensors.tensors_label[0])
-print(tp._all_leaf_tensors.tensors_label[1])
-print(tp._all_leaf_tensors.tensors_label)
-
 def assign_process(tensors_current_sequence,current_activator):
     proc = tensors_current_sequence['input'] * tensors_current_sequence['___p']
 
