@@ -14,8 +14,6 @@ tp.meta_activator = nn.ReLU
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_epoch = 300
 tp.meta_optimizer_params = {'lr':0.015}
-tp.meta_error_measurement = torch.nn.MSELoss
-
 #assign leaf tensors
 tp['input']  = TorchTensorPlus(ttype=TTPType.INPUT,axis_sequence=0)
 tp['input'].tensor = torch.FloatTensor([2.,4.])
@@ -32,4 +30,4 @@ tp.assign_process_prediction = assign_process
 
 
 print(tp.train())
-print(tp.predict(**{'input':torch.FloatTensor([10,11,12])}))
+print(tp.predict(**{'input':torch.FloatTensor([10,21,12])}))
