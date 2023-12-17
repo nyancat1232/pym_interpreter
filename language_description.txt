@@ -1,7 +1,7 @@
 
 
-?<varname> => as parameter
-$<varname> => input
+?(<to_dim>) => as parameter
+$<sequence><varname> => input
 
 !sequence # if this model accepts sequential tensors.
 !loss <<loss function>>
@@ -39,9 +39,5 @@ linspace(-math.pi, 1.*math.pi, 2000, dtype=dtype) => torch.linspace(-math.pi, 1.
 
 
 order:
-" ? " -> " <<autogen>> " :
-    r'\?({pp})' -> '<<autogen>>\1'
 " ?(4) " -> "<<autogen>>(4)" :
     r'\?(\([\d.]+\))' -> '<<autogen>>\1'
-" ?2.1 " -> "torch.FloatTensor([2.1],require_grads=True)" :
-    r'\?([\d.]+)' -> 'torch.FloatTensor([\1],require_grads=True)'

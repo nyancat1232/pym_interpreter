@@ -31,9 +31,8 @@ model Polynomial3:
 model SimpleExample:
     10 ?= ? * $2
 
-!sequence
 model SimpleExampleSequence:
-    [10,20,30,40] ?= ? * $[2,4,6,8]
+    [10,20,30,40] ?= ?1 * $[2,4,6,8]
 
 
 model SimpleExample2:
@@ -41,7 +40,7 @@ model SimpleExample2:
 
 !activator ReLU
 model Xor:
-    [0,1,1,0] ?= $[[0,0],[0,1],[1,0],[0,0]] * ? #? automatically converted as 2x1
+    [0,1,1,0] ?= ($[[0,0],[0,1],[1,0],[0,0]]+?) * ? #? automatically converted as 2x1
 
 
 model AutoConvert:
@@ -49,7 +48,6 @@ model AutoConvert:
 
 
 
-!sequence
 !optimizer(20) SGD(lr=1e-5) 
 model MiniBatch:
     x_train  =  $FloatTensor([[73,  80,  75], 
