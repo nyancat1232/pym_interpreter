@@ -1,10 +1,10 @@
 #model SimpleExample:
-#    s[20,40] ?= ? * $s[2,4]
+#    s[18,36] ?= ? * $s[2,4]
 
 import torch
 import torch.nn as nn
 
-from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlus
+from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlus,ModeType
 
 
 
@@ -18,21 +18,24 @@ tp.meta_error_measurement = torch.nn.MSELoss
 
 #assign leaf tensors
 tp['input']  = TorchTensorPlus(ttype=TTPType.INPUT,axis_sequence=0)
-tp['input'].tensor = torch.FloatTensor([[2.],[4.]])
+tp['input'].tensor = torch.FloatTensor([2.,4.])
 tp['___p']  = TorchTensorPlus(ttype=TTPType.PARAMETER)
 tp['___p'].tensor = torch.FloatTensor(1)
-tp['output']  = TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0)
-tp['output'].tensor = torch.FloatTensor([[20.],[40.]])
+tp._all_leaf_tensors.tensors_label = TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0)
+tp._all_leaf_tensors.tensors_label.tensor = torch.FloatTensor([18.,36.])
 
-def assign_process(tensors_current_sequence):
+print(tp._all_leaf_tensors[0])
+print(tp._all_leaf_tensors[1])
+print(tp._all_leaf_tensors.tensors_label[0])
+print(tp._all_leaf_tensors.tensors_label[1])
+print(tp._all_leaf_tensors.tensors_label)
+
+def assign_process(tensors_current_sequence,current_activator):
     proc = tensors_current_sequence['input'] * tensors_current_sequence['___p']
 
-    _pred = proc
-    _label = tensors_current_sequence['output']
+    return proc
+tp.assign_process_prediction = assign_process
 
-    return _label,_pred
-tp.assign_process_process = assign_process
 
-print(len(torch.FloatTensor([[10],[11],[12]])))
 print(tp.train())
-print(tp.predict(**{'input':torch.FloatTensor([[10],[11],[12]])}))
+print(tp.predict(**{'input':torch.FloatTensor([10,11,12])}))
