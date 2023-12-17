@@ -24,14 +24,13 @@ tp['___p'].tensor = torch.FloatTensor(1)
 tp['output']  = TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0)
 tp['output'].tensor = torch.FloatTensor([[20.],[40.]])
 
-def assign_process(all_active_tensors):
+def assign_process(tensors_current_sequence):
     #input,output => ..[current_sequence], param => ...tensor
 
-    print(all_active_tensors)
-    proc = all_active_tensors['input'] * all_active_tensors['___p']
+    proc = tensors_current_sequence['input'] * tensors_current_sequence['___p']
 
     _pred = proc
-    _label = all_active_tensors['output']
+    _label = tensors_current_sequence['output']
 
     return _label,_pred
 tp.assign_process_process = assign_process
