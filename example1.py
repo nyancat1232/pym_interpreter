@@ -10,7 +10,7 @@ from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlus,ModeType
 
 tp = TorchPlus()
 
-tp.meta_activator = nn.ReLU
+tp.meta_activator = torch.relu
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_epoch = 300
 tp.meta_optimizer_params = {'lr':0.015}
