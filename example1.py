@@ -4,7 +4,7 @@
 import torch
 import torch.nn as nn
 
-from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlus,ModeType
+from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlus
 
 
 
