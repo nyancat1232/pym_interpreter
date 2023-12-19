@@ -1,6 +1,6 @@
 #!sequence
 #model SimpleExampleSequence:
-#    [10,20,30,40] ?= ?1 * $[2,4,6,8]
+#    [10,20,30,40] ?= ?(1) * $[2,4,6,8]
 
 import torch
 import torch.nn as nn
@@ -23,5 +23,5 @@ def assign_process(tensors_current_sequence,current_activator):
 tp.assign_process_prediction = assign_process
 
 
-print(tp.train())
-print(tp.predict(input=torch.FloatTensor([1,2,3,4])))
+result = tp.train()
+print(result(input=torch.FloatTensor([1,2,3,4])))

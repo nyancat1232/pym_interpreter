@@ -27,5 +27,5 @@ def assign_process(tensors_current_sequence,current_activator):
 tp.assign_process_prediction = assign_process
 
 
-print(tp.train())
-print(tp.predict(input=torch.FloatTensor([10,21,12])))
+result = tp.train()
+print(result(input=torch.FloatTensor([10,21,12])))
