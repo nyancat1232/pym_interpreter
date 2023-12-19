@@ -15,9 +15,9 @@ tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_epoch = 300
 tp.meta_optimizer_params = {'lr':0.015}
 #assign leaf tensors
-tp._all_predict_tensors.new_tensor('input',TorchTensorPlus(ttype=TTPType.INPUT,axis_sequence=0),torch.FloatTensor([2.,4.]))
-tp._all_predict_tensors.new_tensor('param',TorchTensorPlus(ttype=TTPType.PARAMETER,axis_sequence=-1),torch.FloatTensor(1))
-tp._all_label_tensors.new_tensor('label',TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0),torch.FloatTensor([18.,36.]))
+tp.all_predict_tensors.new_tensor('input',TorchTensorPlus(ttype=TTPType.INPUT,axis_sequence=0),torch.FloatTensor([2.,4.]))
+tp.all_predict_tensors.new_tensor('param',TorchTensorPlus(ttype=TTPType.PARAMETER,axis_sequence=-1),torch.FloatTensor(1))
+tp.all_label_tensors.new_tensor('label',TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0),torch.FloatTensor([18.,36.]))
 
 
 def assign_process(tensors_current_sequence,current_activator):
