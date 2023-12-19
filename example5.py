@@ -30,10 +30,10 @@ tp.all_predict_tensors.new_tensor('input',TorchTensorPlus(ttype=TTPType.INPUT,ax
 tp.all_predict_tensors.new_tensor('param',TorchTensorPlus(ttype=TTPType.PARAMETER,axis_sequence=-1),torch.FloatTensor(3,1))
 tp.all_label_tensors.new_tensor('label',TorchTensorPlus(ttype=TTPType.DEFAULT,axis_sequence=0),torch.FloatTensor([[152], [185], [180], [196], [142]]))
 
-def assign_process(tensors_current_sequence,current_activator):
+def assign_process(tensors_current_sequence,current_activavtor):
     return tensors_current_sequence['input']@tensors_current_sequence['param']
 tp.assign_process_prediction = assign_process
 
 
 print(tp.train())
-print(tp.predict(**{'input':torch.FloatTensor([[73,80,75]])}))
+print(tp.predict(input=torch.FloatTensor([[73,80,75]])))

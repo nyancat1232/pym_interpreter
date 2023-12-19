@@ -24,4 +24,4 @@ tp.assign_process_prediction = assign_process
 
 
 print(tp.train())
-print(tp.predict(**{'input':torch.FloatTensor([1,2,3,4])}))
+print(tp.predict(input=torch.FloatTensor([1,2,3,4])))
