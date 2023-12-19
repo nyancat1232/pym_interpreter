@@ -13,7 +13,7 @@ def assign_process(current_activator):
 
     tp.label('label',torch.FloatTensor([10,20,30,40]))
     return proc
-tp.assign_process_prediction = assign_process
+tp.process = assign_process
 
 
 result = tp.train()
