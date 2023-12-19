@@ -20,7 +20,7 @@ tp = TorchPlus()
 tp.meta_activator = torch.relu
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_params = {'lr':1e-5}
-tp.meta_optimizer_data_per_iteration = 10
+tp.meta_data_per_iteration = 10
 #assign leaf tensors
 tp.all_predict_tensors.new_tensor('input',TorchTensorPlus(ttype=TTPType.INPUT,axis_sequence=0),torch.FloatTensor([[73, 80, 75],
                              [93, 88, 93],
