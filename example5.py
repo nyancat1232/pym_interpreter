@@ -12,8 +12,7 @@
 #-------------
 
 import torch
-import torch.nn as nn
-from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlusInternal
+from pyplus.pytorch.simple import TorchPlus
 
 tp = TorchPlus()
 
@@ -21,7 +20,6 @@ tp.meta_activator = torch.relu
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_params = {'lr':1e-5}
 tp.meta_data_per_iteration = 10
-#assign leaf tensors
 
 def assign_process(current_activavtor):
     proc = tp.input('input',torch.FloatTensor([[73, 80, 75],

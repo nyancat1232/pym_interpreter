@@ -4,12 +4,9 @@
 
 import torch
 import torch.nn as nn
-from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlusInternal,TensorsSquence
+from pyplus.pytorch.simple import TorchPlus
 
 tp = TorchPlus()
-
-
-ttp2 = TorchTensorPlusInternal(ttype=TTPType.PARAMETER,axis_sequence=-1)
 
 def assign_process(current_activator):
     proc = tp.parameter('param',torch.FloatTensor(1))*tp.input('input',torch.FloatTensor([2,4,6,8]))

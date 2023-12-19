@@ -2,9 +2,8 @@
 #    s[18,36] ?= ? * $s[2,4]
 
 import torch
-import torch.nn as nn
 
-from pyplus.pytorch.simple import TorchPlus,TTPType,TorchTensorPlusInternal
+from pyplus.pytorch.simple import TorchPlus
 
 tp = TorchPlus()
 
