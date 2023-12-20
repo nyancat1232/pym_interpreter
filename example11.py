@@ -7,7 +7,7 @@ import torch.nn as nn
 from pyplus.pytorch.simple import TorchPlus
 
 tp = TorchPlus()
-
+tp.meta_data_per_iteration=3
 def assign_process(current_activator):
     proc = tp.parameter('param',torch.FloatTensor(1))*tp.input('input',torch.FloatTensor([2,4,6,8]))
 
@@ -16,5 +16,5 @@ def assign_process(current_activator):
 tp.process = assign_process
 
 
-result = tp.train()
-print(result(input=torch.FloatTensor([1,2,3,4])))
+result = tp.train(show_progress=True)
+print(result(input=torch.FloatTensor([1,2,3,4,1,2,3])))

@@ -1,4 +1,4 @@
 test.pym.py
 .DS_Store
 .ipynb_checkpoints
-MNist_data/*
+data/*

@@ -19,7 +19,7 @@ tp = TorchPlus()
 tp.meta_activator = torch.relu
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_params = {'lr':1e-5}
-tp.meta_data_per_iteration = 10
+tp.meta_data_per_iteration = 2
 
 def assign_process(current_activavtor):
     proc = tp.input('input',torch.FloatTensor([[73, 80, 75],
@@ -33,5 +33,5 @@ def assign_process(current_activavtor):
 tp.process = assign_process
 
 
-result = tp.train()
+result = tp.train(show_progress=True)
 print(result(input=torch.FloatTensor([[73,80,75]])))
