@@ -16,5 +16,5 @@ def assign_process(current_activator):
 tp.process = assign_process
 
 
-result = tp.train(show_progress=True)
+result = tp.train(show_epoch_process=True)
 print(result(input=torch.FloatTensor([1,2,3,4,1,2,3])))

@@ -8,7 +8,6 @@
 #   y_train = FloatTensor([[152], [185], [180], [196], [142]])
 #   y_train = x_train @ ?(1) + ?
 
-
 #-------------
 
 import torch
@@ -20,18 +19,18 @@ tp.meta_activator = torch.relu
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_params = {'lr':1e-5}
 tp.meta_data_per_iteration = 2
-
+tp.meta_epoch=20
 def assign_process(current_activavtor):
     proc = tp.input('input',torch.FloatTensor([[73, 80, 75],
                              [93, 88, 93],
                              [89, 91, 90],
                              [96, 98, 100],
-                             [73, 66, 70]])) @ tp.parameter('param',torch.FloatTensor(3,1))
+                             [73, 66, 70]])) @ tp.parameter('param',torch.rand(3,1))
     
     tp.label('label',torch.FloatTensor([[152], [185], [180], [196], [142]]))
     return proc
 tp.process = assign_process
 
 
-result = tp.train(show_progress=True)
+result = tp.train(show_every_iteration=True)
 print(result(input=torch.FloatTensor([[73,80,75]])))
