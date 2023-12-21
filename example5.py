@@ -24,11 +24,8 @@ class Test(TorchPlus):
         self.label(torch.FloatTensor([[152], [185], [180], [196], [142]]))
         return proc
 
-tp = Test()
-tp.meta_optimizer = torch.optim.SGD
-tp.meta_optimizer_params = {'lr':1e-5}
-tp.meta_data_per_iteration = 2
-tp.meta_epoch=20
+tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},
+          meta_data_per_iteration = 3,meta_epoch=1000)
 
 result = tp.train(show_every_iteration=True)
 print(result(input=torch.FloatTensor([[73,80,75]])))
