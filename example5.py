@@ -14,15 +14,15 @@ import torch
 from pyplus.pytorch.simple import TorchPlus
 
 class Test(TorchPlus):
-    def process(self):
-        proc = self.input('input',torch.FloatTensor([[73, 80, 75],
-                             [93, 88, 93],
-                             [89, 91, 90],
-                             [96, 98, 100],
-                             [73, 66, 70]])) @ tp.parameter('param',torch.rand(3,1))
-    
-        self.label(torch.FloatTensor([[152], [185], [180], [196], [142]]))
-        return proc
+        def process(self):
+            proc = self.input('input',torch.FloatTensor([[73, 80, 75],
+                                [93, 88, 93],
+                                [89, 91, 90],
+                                [96, 98, 100],
+                                [73, 66, 70]])) @ self.parameter('param',torch.rand(3,1))
+        
+            self.label(torch.FloatTensor([[152], [185], [180], [196], [142]]))
+            return proc
 
 tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},
           meta_data_per_iteration = 3,meta_epoch=1000)
