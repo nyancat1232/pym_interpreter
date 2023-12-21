@@ -5,16 +5,13 @@ import torch
 
 from pyplus.pytorch.simple import TorchPlus
 
-tp = TorchPlus()
+class Test(TorchPlus):
+    def process(self):
+        proc = self.input('input',torch.FloatTensor([2.,4.])) * self.parameter('param',torch.FloatTensor(1))
 
-#assign leaf tensors
-def assign_process():
-    proc = tp.input('input',torch.FloatTensor([2.,4.])) * tp.parameter('param',torch.FloatTensor(1))
-
-    tp.label(torch.FloatTensor([18.,36.]))
-    return proc
-tp.process = assign_process
+        self.label(torch.FloatTensor([18.,36.]))
+        return proc
 
 
-result = tp.train()
+result = Test().train()
 print(result(input=torch.FloatTensor([10,21,12])))
