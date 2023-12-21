@@ -11,7 +11,7 @@ tp = TorchPlus()
 def assign_process():
     proc = tp.input('input',torch.FloatTensor([2.,4.])) * tp.parameter('param',torch.FloatTensor(1))
 
-    tp.label('label',torch.FloatTensor([18.,36.]))
+    tp.label(torch.FloatTensor([18.,36.]))
     return proc
 tp.process = assign_process
 

@@ -26,7 +26,7 @@ def assign_process():
                              [96, 98, 100],
                              [73, 66, 70]])) @ tp.parameter('param',torch.rand(3,1))
     
-    tp.label('label',torch.FloatTensor([[152], [185], [180], [196], [142]]))
+    tp.label(torch.FloatTensor([[152], [185], [180], [196], [142]]))
     return proc
 tp.process = assign_process
 

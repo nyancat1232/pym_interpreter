@@ -11,7 +11,7 @@ tp.meta_data_per_iteration=3
 def assign_process():
     proc = tp.parameter('param',torch.FloatTensor(1))*tp.input('input',torch.FloatTensor([2,4,6,8]))
 
-    tp.label('label',torch.FloatTensor([10,20,30,40]))
+    tp.label(torch.FloatTensor([10,20,30,40]))
     return proc
 tp.process = assign_process
 
