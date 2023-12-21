@@ -28,4 +28,5 @@ tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},
           meta_data_per_iteration = 3,meta_epoch=1000)
 
 result = tp.train(show_every_iteration=True)
+print(tp.get_parameters())
 print(result(input=torch.FloatTensor([[73,80,75]])))

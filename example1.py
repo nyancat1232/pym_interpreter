@@ -12,6 +12,7 @@ class Test(TorchPlus):
         self.label(torch.FloatTensor([18.,36.]))
         return proc
 
-
-result = Test().train()
-print(result(input=torch.FloatTensor([10,21,12])))
+tp = Test()
+result = tp.train()
+print(tp.get_parameters())
+print(result(input=torch.FloatTensor([10,21,12,95])))
