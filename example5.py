@@ -15,12 +15,11 @@ from pyplus.pytorch.simple import TorchPlus
 
 tp = TorchPlus()
 
-tp.meta_activator = torch.relu
 tp.meta_optimizer = torch.optim.SGD
 tp.meta_optimizer_params = {'lr':1e-5}
 tp.meta_data_per_iteration = 2
 tp.meta_epoch=20
-def assign_process(current_activavtor):
+def assign_process():
     proc = tp.input('input',torch.FloatTensor([[73, 80, 75],
                              [93, 88, 93],
                              [89, 91, 90],

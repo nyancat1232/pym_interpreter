@@ -8,7 +8,7 @@ from pyplus.pytorch.simple import TorchPlus
 tp = TorchPlus()
 
 #assign leaf tensors
-def assign_process(current_activator):
+def assign_process():
     proc = tp.input('input',torch.FloatTensor([2.,4.])) * tp.parameter('param',torch.FloatTensor(1))
 
     tp.label('label',torch.FloatTensor([18.,36.]))
