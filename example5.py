@@ -15,11 +15,11 @@ from simpletorch.simple import TorchPlus
 
 class Test(TorchPlus):
         def process(self):
-            proc = self.input('input',torch.FloatTensor([[73, 80, 75],
+            proc = self.input([[73, 80, 75],
                                 [93, 88, 93],
                                 [89, 91, 90],
                                 [96, 98, 100],
-                                [73, 66, 70]])) @ self.parameter((3,1),'param')
+                                [73, 66, 70]],'input') @ self.parameter((3,1),'param')
             proc = proc.squeeze()
             self.label([152, 185, 180, 196, 142])
             return proc
