@@ -7,7 +7,7 @@ from simpletorch.simple import TorchPlus
 
 class Test(TorchPlus):
     def process(self):
-        proc = self.input('input',torch.FloatTensor([2.,4.])) * self.parameter('param',torch.FloatTensor(1))
+        proc = self.input('input',torch.FloatTensor([2.,4.])) * self.parameter([1],'param')
 
         self.label(torch.FloatTensor([18.,36.]))
         return proc
