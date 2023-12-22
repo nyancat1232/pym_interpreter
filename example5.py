@@ -21,7 +21,7 @@ class Test(TorchPlus):
                                 [96, 98, 100],
                                 [73, 66, 70]])) @ self.parameter((3,1),'param')
             proc = proc.squeeze()
-            self.label(torch.FloatTensor([152, 185, 180, 196, 142]))
+            self.label([152, 185, 180, 196, 142])
             return proc
 
 tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},

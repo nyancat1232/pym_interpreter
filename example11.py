@@ -10,7 +10,7 @@ class Test(TorchPlus):
     def process(self):
         proc = self.parameter([1],'param')*self.input('input',torch.FloatTensor([2,4,6,8]))
 
-        self.label(torch.FloatTensor([10,20,30,40]))
+        self.label([10,20,30,40])
         return proc
 tp = Test()
 tp.meta_data_per_iteration=3
