@@ -1,0 +1,3 @@
+[submodule "simpletorch"]
+	path = simpletorch
+	url = https://github.com/nyancat1232/simpletorch.git
