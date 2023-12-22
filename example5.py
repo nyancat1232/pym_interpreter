@@ -11,7 +11,7 @@
 #-------------
 
 import torch
-from simpletorch.simple import TorchPlus
+from simpletorch.simple import TorchPlus,MetaDataType
 
 class Test(TorchPlus):
         def process(self):
@@ -19,9 +19,9 @@ class Test(TorchPlus):
                                 [93, 88, 93],
                                 [89, 91, 90],
                                 [96, 98, 100],
-                                [73, 66, 70]],'input') @ self.parameter((3,1),'param')
+                                [73, 66, 70]],MetaDataType.NUMERICAL,'input') @ self.parameter((3,1),'param')
             proc = proc.squeeze()
-            self.label([152, 185, 180, 196, 142])
+            self.label([152, 185, 180, 196, 142],MetaDataType.NUMERICAL)
             return proc
 
 tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},

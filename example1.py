@@ -3,13 +3,13 @@
 
 import torch
 
-from simpletorch.simple import TorchPlus
+from simpletorch.simple import TorchPlus,MetaDataType
 
 class Test(TorchPlus):
     def process(self):
-        proc = self.input([2.,4.],'input') * self.parameter([1],'param')
+        proc = self.input([2.,4.],MetaDataType.NUMERICAL,'input') * self.parameter([1],'param')
 
-        self.label([18.,36.])
+        self.label([18.,36.],MetaDataType.NUMERICAL)
         return proc
 
 tp = Test()
