@@ -1,6 +1,6 @@
 import torch
 
-from pyplus.pytorch.simple import TorchPlus
+from simpletorch.simple import TorchPlus
 
 tp = TorchPlus()
 #assign leaf tensors

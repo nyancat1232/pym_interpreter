@@ -4,7 +4,7 @@
 
 import torch
 import torch.nn as nn
-from pyplus.pytorch.simple import TorchPlus
+from simpletorch.simple import TorchPlus
 
 class Test(TorchPlus):
     def process(self):
