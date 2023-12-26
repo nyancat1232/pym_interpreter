@@ -30,6 +30,6 @@ class Test(TorchPlus):
 tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},
           meta_data_per_iteration = 3)
 
-result = tp.train()
+result = tp.train(epoch=10000)
 print(tp.get_parameters())
 print(result(input=torch.FloatTensor([[73,80,75]])))
