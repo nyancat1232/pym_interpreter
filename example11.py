@@ -4,7 +4,7 @@
 
 import torch
 import torch.nn as nn
-from simpletorch.simple import TorchPlus,MetaDataType
+from simpletorch.simple import TorchPlus,MetaDataType,CurrentStateInformation
 
 class Test(TorchPlus):
     def process(self):
@@ -12,6 +12,8 @@ class Test(TorchPlus):
 
         self.label([10,20,30,40],MetaDataType.NUMERICAL)
         return proc
+    def show_progress(self,csi:CurrentStateInformation):
+        print(f'Epoch : {csi.current_epoch} \tIteration : {csi.current_iteration}/{csi.len_iteration}\tLoss : {csi.current_loss}')
 
 tp = Test()
 tp.meta_data_per_iteration=3

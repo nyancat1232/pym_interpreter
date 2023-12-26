@@ -11,7 +11,7 @@
 #-------------
 
 import torch
-from simpletorch.simple import TorchPlus,MetaDataType
+from simpletorch.simple import TorchPlus,MetaDataType,CurrentStateInformation
 
 class Test(TorchPlus):
     def process(self):
@@ -23,6 +23,8 @@ class Test(TorchPlus):
         proc = proc.squeeze()
         self.label([152, 185, 180, 196, 142],MetaDataType.NUMERICAL)
         return proc
+    def show_progress(self,csi:CurrentStateInformation):
+        print(f'Epoch : {csi.current_epoch} \tIteration : {csi.current_iteration}/{csi.len_iteration}\tLoss : {csi.current_loss}')
 
 
 tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},
@@ -31,5 +33,3 @@ tp = Test(meta_optimizer = torch.optim.SGD,meta_optimizer_params = {'lr':1e-5},
 result = tp.train()
 print(tp.get_parameters())
 print(result(input=torch.FloatTensor([[73,80,75]])))
-
-#print(f'Epoch : {current_epoch}/{len_epoch}\tIteration : {current_iter}/{len_iter}\tLoss : {current_loss}')
