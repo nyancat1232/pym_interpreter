@@ -12,9 +12,9 @@ class Test(TorchPlus):
 
         self.label([10,20,30,40],MetaDataType.NUMERICAL)
         return proc
+
 tp = Test()
 tp.meta_data_per_iteration=3
-
-result = tp.train(show_every_iteration=True)
+result = tp.train()
 print(tp.get_parameters())
 print(result(input=torch.FloatTensor([1,2,3,4,1,2,3])))

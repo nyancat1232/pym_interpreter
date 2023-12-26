@@ -13,6 +13,6 @@ class Test(TorchPlus):
         return proc
 
 tp = Test()
-result = tp.train()
+result = tp.train(10000)
 print(tp.get_parameters())
 print(result(input=torch.FloatTensor([10,21,12,95])))
