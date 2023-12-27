@@ -12,6 +12,7 @@ class Test(TorchPlus):
         self.label([18.,36.],MetaDataType.NUMERICAL)
         return proc
     def show_progress(self,csi:CurrentStateInformation):
+        print(f'pred : {csi.current_result}')
         print(f'Epoch : {csi.current_epoch} \tIteration : {csi.current_iteration}/{csi.len_iteration}\tLoss : {csi.current_loss}')
 
 tp = Test()
