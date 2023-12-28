@@ -7,9 +7,9 @@ from simpletorch.simple import TorchPlus,MetaDataType,CurrentStateInformation
 
 class Test(TorchPlus):
     def process(self):
-        proc = self.input([2.,4.],MetaDataType.NUMERICAL,'input') * self.parameter([1],'param')
+        proc = self.input(data=[2.,4.],meta_data_type=MetaDataType.NUMERICAL,name='input') * self.parameter(size=[1],name='param')
         
-        self.label([18.,36.],MetaDataType.NUMERICAL)
+        self.label(data=[18.,36.],meta_data_type=MetaDataType.NUMERICAL)
         return proc
     def show_progress(self,csi:CurrentStateInformation):
         print(f'pred : {csi.current_result}')

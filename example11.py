@@ -8,7 +8,7 @@ from simpletorch.simple import TorchPlus,MetaDataType,CurrentStateInformation
 
 class Test(TorchPlus):
     def process(self):
-        proc = self.parameter([1],'param')*self.input([2,4,6,8],meta_data_type=MetaDataType.NUMERICAL,name='input')
+        proc = self.parameter('param',[1])*self.input(data=[2,4,6,8],meta_data_type=MetaDataType.NUMERICAL,name='input')
 
         self.label([10,20,30,40],MetaDataType.NUMERICAL)
         return proc
