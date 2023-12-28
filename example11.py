@@ -18,5 +18,5 @@ class Test(TorchPlus):
 tp = Test()
 tp.meta_data_per_iteration=3
 result = tp.train()
-print(tp.get_parameters())
+print(tp.parameter('param'))
 print(result(input=torch.FloatTensor([1,2,3,4,1,2,3])))
