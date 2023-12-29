@@ -2,9 +2,11 @@ from simpletorch.dezero import *
 
 v0=Variable(np.array(0.5))
 print(v0)
-v1=Square()(v0)
-v2=Exp()(v1)
-v3=Square()(v2)
+
+#v1=Square()(v0)
+#v2=Exp()(v1)
+#v3=Square()(v2)
+v3=square(exp(square(v0)))
 v3.grad=np.array(1.0)
 print(v3)
 aa = v3.backward()
