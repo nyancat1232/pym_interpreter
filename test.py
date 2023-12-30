@@ -18,3 +18,14 @@ class SquareExpTest(TestCase):
         self.assertTrue(np.allclose(v3.data,1.64872))
         v3.backward()
         self.assertTrue(np.allclose(v0.grad,3.29744))
+
+class AddTest(TestCase):
+    def test_add(self):
+        vv = Add()(3,2)
+        self.assertEqual(vv.data,5)
+
+class TypeTest(TestCase):
+    def test_types(self):
+        self.assertIsInstance(init_variable(3),Variable)
+    def test_function_type(self):
+        self.assertIsInstance(square(4),Variable)
