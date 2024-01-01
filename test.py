@@ -14,7 +14,6 @@ class SquareExpTest(TestCase):
         v0=Variable(0.5)
         v3=square(exp(square(v0)))
 
-        v3.grad=np.array(1.0)
         self.assertTrue(np.allclose(v3.data,1.64872))
         v3.backward()
         self.assertTrue(np.allclose(v0.grad,3.29744))
@@ -23,7 +22,6 @@ class SquareExpTest(TestCase):
         v0=Variable(3)
         v=Add()(v0,2)
         self.assertEqual(v.data,5)
-        v.grad = 1.0
         v.backward()
         self.assertEqual(v0.grad,1)
 
@@ -37,3 +35,14 @@ class TypeTest(TestCase):
         self.assertIsInstance(init_variable(3),Variable)
     def test_function_type(self):
         self.assertIsInstance(square(4),Variable)
+
+class GenerationTest(TestCase):
+    def test_generation(self):
+        v = add(3,4)
+        a = add(1,v)
+        r = add(4,a)
+        s = square(r)
+        self.assertEqual(v,1)
+        self.assertEqual(a,2)
+        self.assertEqual(r,3)
+        self.assertEqual(s,4)
