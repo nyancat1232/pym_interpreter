@@ -46,3 +46,13 @@ class GenerationTest(TestCase):
         self.assertEqual(a.generation,2)
         self.assertEqual(r.generation,3)
         self.assertEqual(s.generation,4)
+
+    def test_generation2(self):
+        fsq = Square()
+        rfsq=fsq(Variable(3.0))
+        self.assertEqual(fsq.generation,0)
+        self.assertEqual(rfsq.generation,1)
+        fex = Exp()
+        gen1 = fex(rfsq)
+        self.assertEqual(fex.generation,1)
+        self.assertEqual(gen1.generation,2)
