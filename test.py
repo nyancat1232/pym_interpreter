@@ -15,14 +15,14 @@ class SquareExpTest(TestCase):
         v3=square(exp(square(v0)))
 
         self.assertTrue(np.allclose(v3.data,1.64872))
-        v3.backward()
+        v3.backward_from_end()
         self.assertTrue(np.allclose(v0.grad,3.29744))
     
     def test_add1(self):  
         v0=Variable(3)
         v=add(v0,2)
         self.assertEqual(v.data,5)
-        v.backward()
+        v.backward_from_end()
         self.assertEqual(v0.grad,1)
 
 class AddTest(TestCase):
@@ -33,7 +33,7 @@ class AddTest(TestCase):
         v = Variable(2)
 
         r = add(v,v,v)
-        r.backward()
+        r.backward_from_end()
         self.assertEqual(v.grad,3)
 
 class TypeTest(TestCase):
