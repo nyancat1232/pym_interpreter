@@ -25,6 +25,18 @@ class SquareExpTest(TestCase):
         v.backward_from_end()
         self.assertEqual(v0.grad,1)
 
+    def test_back(self):
+        v0 = Variable(3)
+        v1 = Variable(4)
+        v = add(v0,v1) #7
+        a = add(1,v) #8
+        r = add(4,a) #12
+        s = square(r) #144
+
+        s.backward_from_end()
+        self.assertEqual(v0.grad,24.)
+        self.assertEqual(v1.grad,24.)
+
 class AddTest(TestCase):
     def test_add2(self):
         vv = add(3,2)
