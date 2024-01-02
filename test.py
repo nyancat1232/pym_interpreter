@@ -29,6 +29,12 @@ class AddTest(TestCase):
     def test_add2(self):
         vv = add(3,2)
         self.assertEqual(vv.data,5)
+    def test_duplicate_reference(self):
+        v = Variable(2)
+
+        r = add(v,v,v)
+        r.backward()
+        self.assertEqual(v.grad,3)
 
 class TypeTest(TestCase):
     def test_types(self):
