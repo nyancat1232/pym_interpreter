@@ -73,6 +73,17 @@ class MulTest(TestCase):
         self.assertAlmostEqual(r.grad,20.0)
         self.assertAlmostEqual(r1.grad,34.0)
 
+class DivTest(TestCase):
+    def test_div(self):
+        r = Variable(4.5)
+        v = Variable(1.5)
+        rr = r/v
+
+        self.assertAlmostEqual(rr.data,3.0)
+        rr.backward_from_end()
+        self.assertAlmostEqual(r.grad,0.6666666666)
+        self.assertAlmostEqual(v.grad,-2)
+
 class TypeTest(TestCase):
     def test_types(self):
         self.assertIsInstance(init_variable(3),Variable)
