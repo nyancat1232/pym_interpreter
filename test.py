@@ -44,8 +44,9 @@ class AddTest(TestCase):
     def test_duplicate_reference(self):
         v = Variable(2)
 
-        r = add(v,v,v)
-        r.backward_from_end()
+        r = add(v,v)
+        r2 = add(r,v)
+        r2.backward_from_end()
         self.assertEqual(v.grad,3)
 
 class MulTest(TestCase):
