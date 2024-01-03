@@ -49,6 +49,19 @@ class AddTest(TestCase):
         r2.backward_from_end()
         self.assertEqual(v.grad,3)
 
+class SubTest(TestCase):
+    def test_sub(self):
+        r = Variable(3.4)
+        v = Variable(2.3)
+        rr = r-v
+        c = Variable(10.)
+        rr2 = rr*c
+        
+        self.assertAlmostEqual(rr2.data,11.) # 11.
+        rr2.backward_from_end()
+        self.assertAlmostEqual(r.grad,10.) 
+        self.assertAlmostEqual(v.grad,-10.) 
+
 class MulTest(TestCase):
     def test_mul(self):
         r = Variable(3.4)
