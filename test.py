@@ -48,6 +48,16 @@ class AddTest(TestCase):
         r.backward_from_end()
         self.assertEqual(v.grad,3)
 
+class MulTest(TestCase):
+    def test_mul(self):
+        r = Variable(3.4)
+        r1 = Variable(2)
+        v0 = mul(r,r1,10.)
+        self.assertAlmostEqual(v0.data,68.0)
+        v0.backward_from_end()
+        self.assertAlmostEqual(r.grad,20.0)
+        self.assertAlmostEqual(r1.grad,34.0)
+
 class TypeTest(TestCase):
     def test_types(self):
         self.assertIsInstance(init_variable(3),Variable)
