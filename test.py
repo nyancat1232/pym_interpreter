@@ -52,9 +52,10 @@ class MulTest(TestCase):
     def test_mul(self):
         r = Variable(3.4)
         r1 = Variable(2)
-        v0 = mul(r,r1,10.)
-        self.assertAlmostEqual(v0.data,68.0)
-        v0.backward_from_end()
+        v0 = mul(r,r1)
+        v1 = mul(v0,10.)
+        self.assertAlmostEqual(v1.data,68.0)
+        v1.backward_from_end()
         self.assertAlmostEqual(r.grad,20.0)
         self.assertAlmostEqual(r1.grad,34.0)
 
