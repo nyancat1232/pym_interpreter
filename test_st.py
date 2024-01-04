@@ -2,7 +2,7 @@ from unittest import TestCase
 import torch
 import numpy as np
 
-from simpletorch.simple import TorchPlus,MetaDataType,CurrentStateInformation
+from simpletorch.simpletorch import TorchPlus,MetaDataType,CurrentStateInformation
 
 def type_to(tens:torch.Tensor):
     return tens.detach().numpy()[0]

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from simpletorch.dezero import *
+from simpletorch.core_simple import *
 import numpy as np
 class SquareTest(TestCase):
     def test_something(self):
