@@ -85,6 +85,14 @@ class DivTest(TestCase):
         self.assertAlmostEqual(r.grad,0.6666666666)
         self.assertAlmostEqual(v.grad,-2)
 
+class PowTest(TestCase):
+    def test_pow(self):
+        x = Variable(2.0)
+        y = x** 3
+        y.backward_from_end()
+        self.assertAlmostEqual(y.data,8.0)
+        self.assertAlmostEqual(x.grad,12.0)
+
 class TypeTest(TestCase):
     def test_types(self):
         self.assertIsInstance(init_variable(3),Variable)
