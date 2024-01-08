@@ -2,6 +2,7 @@ from unittest import TestCase
 from simpletorch import Variable
 from simpletorch.core_simple import square,exp,add,mul,sin,init_variable,Square,Exp
 import numpy as np
+import math
 class SquareTest(TestCase):
     def test_something(self):
         x = Variable(2.0)
@@ -103,6 +104,23 @@ class FuncTest(TestCase):
         y.backward_from_end()
         self.assertAlmostEqual(0.70710678,y.data)
         self.assertAlmostEqual(0.70710678,x.grad)
+    def test_my_sin(self):
+        def my_sin(x, threshold=0.00001):
+            y=0
+            for i in range(10000):
+                c = (-1) ** i / math.factorial(2*i+1)
+                t = c* x ** (2*i + 1)
+                y = y + t
+                if abs(t.data) < threshold:
+                    break
+            return y
+
+        aa = Variable(3.2,name='x')
+        r = my_sin(aa)
+        r2 = sin(aa)
+        self.assertAlmostEqual(r.data,r2.data)
+
+
 
 class GenerationTest(TestCase):
     def test_generation(self):
