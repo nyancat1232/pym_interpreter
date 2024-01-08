@@ -1,6 +1,6 @@
 from unittest import TestCase
 from simpletorch import Variable
-from simpletorch.core_simple import square,exp,add,mul,init_variable,Square,Exp
+from simpletorch.core_simple import square,exp,add,mul,sin,init_variable,Square,Exp
 import numpy as np
 class SquareTest(TestCase):
     def test_something(self):
@@ -95,6 +95,14 @@ class TypeTest(TestCase):
         self.assertIsInstance(init_variable(3),Variable)
     def test_function_type(self):
         self.assertIsInstance(square(4),Variable)
+
+class FuncTest(TestCase):
+    def test_sin(self):
+        x = Variable(np.pi/4)
+        y = sin(x)
+        y.backward_from_end()
+        self.assertAlmostEqual(0.70710678,y.data)
+        self.assertAlmostEqual(0.70710678,x.grad)
 
 class GenerationTest(TestCase):
     def test_generation(self):
