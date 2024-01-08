@@ -119,3 +119,12 @@ class GenerationTest(TestCase):
         gen1 = fex(rfsq)[0]
         self.assertEqual(fex.generation,1)
         self.assertEqual(gen1.generation,2)
+
+    def test_matyas(self):
+        def matyas(x,y):
+            vx = Variable(x,'x')
+            vy = Variable(y,'y')
+            return 0.26*(vx**2 + vy**2)-0.48 * (vx*vy)
+
+        r = matyas(1.,1.)
+        self.assertAlmostEqual(r.data,0.040)
